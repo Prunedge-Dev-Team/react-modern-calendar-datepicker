@@ -39,15 +39,18 @@ const Calendar = ({
     isYearSelectorOpen: false,
   });
 
+  //  if mainState => get month range from mainstate.
+  //  if value && !mainState  => get month range from value.
+  //  if !value && !mainState => compute month range from current date.
   useEffect(() => {
-    if (getMonthStart || getMonthEnd) {
+    if (!!getMonthStart || !!getMonthEnd) {
       const date = new Date();
       let year;
       let month;
 
-      if (!mainState.activeDate) {
-        year = value.year ? value.year : date.getFullYear();
-        month = value.month ? value.month : date.getMonth() + 1;
+      if (!mainState?.activeDate) {
+        year = value?.year ? value?.year : date.getFullYear();
+        month = value?.month ? value?.month : date.getMonth() + 1;
       } else {
         const { year: activeYear, month: activeMonth } = mainState.activeDate;
         year = activeYear;
