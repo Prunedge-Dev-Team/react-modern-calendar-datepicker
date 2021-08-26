@@ -28,6 +28,8 @@ const Calendar = ({
   shouldHighlightWeekends,
   renderFooter,
   customDaysClassName,
+  getMonthStart,
+  getMonthEnd,
 }) => {
   const calendarElement = useRef(null);
   const [mainState, setMainState] = useState({
@@ -36,6 +38,37 @@ const Calendar = ({
     isMonthSelectorOpen: false,
     isYearSelectorOpen: false,
   });
+
+  useEffect(() => {
+    if (getMonthStart || getMonthEnd) {
+      const date = new Date();
+      let year;
+      let month;
+
+      if (!mainState.activeDate) {
+        year = value.year ? value.year : date.getFullYear();
+        month = value.month ? value.month : date.getMonth() + 1;
+      } else {
+        const { year: activeYear, month: activeMonth } = mainState.activeDate;
+        year = activeYear;
+        month = activeMonth;
+      }
+
+      const lastDay = new Date(year, month, 0);
+      const monthStart = {
+        year,
+        month,
+        day: 1,
+      };
+      const monthEnd = {
+        year,
+        month,
+        day: lastDay.getDate(),
+      };
+      if (getMonthStart) getMonthStart(monthStart);
+      if (getMonthEnd) getMonthEnd(monthEnd);
+    }
+  }, [mainState.activeDate]);
 
   useEffect(() => {
     const handleKeyUp = ({ key }) => {
