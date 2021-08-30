@@ -53,6 +53,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
-## LICENSE
+# IMPORTANT !!!
+This is a fork of https://github.com/HassanMojab/react-modern-calendar-datepicker repo as opposed to the actual parent repo https://github.com/Kiarash-Z/react-modern-calendar-datepicker (see why at https://github.com/Kiarash-Z/react-modern-calendar-datepicker/issues/204 ).
 
-[MIT](LICENSE)
+### Why this Fork
+  It includes some extra methods like getMonthStart and getMonthEnd, which are not included in the react-modern-calendar-datepicker docs. <br/>
+  These let you get the start and end date of the current month anytime a user navigates. This includes all forms of navigation. e.g by clicking on the arrow buttons, by selecting a month or year to view, etc.
+
+  This fork is currently in use on https://github.com/Prunedge-Dev-Team/delta-lms-web
+
